@@ -144,6 +144,8 @@ Este projeto foi possível graças às contribuições das seguintes desenvolved
         </a>
       </td>
     </tr>
+  </table>
+  <table>
     <tr>
       <td align="center">
         <a href="https://www.linkedin.com/in/larissa-alves-s/" title="Linkedin da Larissa Alves">
