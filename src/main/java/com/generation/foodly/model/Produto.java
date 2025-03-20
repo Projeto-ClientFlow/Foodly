@@ -1,7 +1,8 @@
 package com.generation.foodly.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -35,12 +36,16 @@ public class Produto {
 	private Float tamanhoPorcao;
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonIgnoreProperties("produto")
 	private Categoria categoria; 
 	
 	@ManyToOne
-	@JsonBackReference
+	@JsonIgnoreProperties("produto")
 	private Usuario usuario;
+	
+	@Column(nullable = false)
+	private boolean descontoAplicado = false;
+
 
 	public Long getId() {
 		return id;
@@ -97,6 +102,14 @@ public class Produto {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-	
+
+	public boolean isDescontoAplicado() {
+		return descontoAplicado;
+	}
+
+	public void setDescontoAplicado(boolean descontoAplicado) {
+		this.descontoAplicado = descontoAplicado;
+	}
+
 
 }

@@ -26,7 +26,7 @@ public class ProdutoService {
 
  // Função especial: Liberação de Cupom de Desconto de 10% para Produtos Acima de R$ 100
     public ResponseEntity<String> aplicarDesconto(Long id, String token) {
-     
+        
         // Valida o token JWT e extrai o nome do usuário
         String usuarioNome = jwtService.extractUsername(token);
         
@@ -48,14 +48,20 @@ public class ProdutoService {
         }
 
         Produto produto = produtoOpt.get();
+        
+        // Verifica se o desconto já foi aplicado
+        if (produto.isDescontoAplicado()) {
+            return ResponseEntity.status(400).body("Desconto já foi aplicado a este produto.");
+        }
 
         // Verifica se o preço do produto é maior que R$ 100
         if (produto.getPrecoProduto() > 100) {
             double desconto = produto.getPrecoProduto() * 0.10;  // Calcula 10% de desconto
             double precoComDesconto = produto.getPrecoProduto() - desconto;
 
-            // Atualiza o produto com o novo preço
+            // Atualiza o produto com o novo preço e marca o desconto como aplicado
             produto.setPrecoProduto((float) precoComDesconto);
+            produto.setDescontoAplicado(true); 
             produtoRepository.save(produto);
 
             return ResponseEntity.ok("Desconto de 10% aplicado! Novo preço: R$ " + precoComDesconto);
@@ -63,4 +69,5 @@ public class ProdutoService {
             return ResponseEntity.status(400).body("O preço do produto não é superior a R$ 100,00. Desconto não aplicado.");
         }
     }
+
 }
