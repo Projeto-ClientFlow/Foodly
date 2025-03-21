@@ -53,7 +53,4 @@ public class Categoria {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-	
-	
-
 }
