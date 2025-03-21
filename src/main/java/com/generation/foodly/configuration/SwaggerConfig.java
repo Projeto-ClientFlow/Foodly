@@ -13,6 +13,7 @@ import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
 
 
+@Configuration
 public class SwaggerConfig {
 	
 	@Bean
