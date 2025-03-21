@@ -2,7 +2,7 @@ package com.generation.foodly.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -27,7 +27,7 @@ public class Categoria {
 	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "categoria",
 			cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("categoria")
+	@JsonBackReference
 	private List<Produto> produto;
 
 	public Long getId() {
@@ -53,7 +53,4 @@ public class Categoria {
 	public void setProduto(List<Produto> produto) {
 		this.produto = produto;
 	}
-	
-	
-
 }

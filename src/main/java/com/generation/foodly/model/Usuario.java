@@ -2,7 +2,7 @@ package com.generation.foodly.model;
 
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.CascadeType;
@@ -42,7 +42,7 @@ public class Usuario {
 	private String foto;
 
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties("usuario")
+	@JsonBackReference
 	private List<Produto> produto;
 
 	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
