@@ -3,7 +3,7 @@
 # Projeto Foodly
 ## Plataforma de Delivery de Alimentos
 
-![Banner do Projeto Foodly](#)
+![Banner do Projeto Foodly](src/main/resources/img/Banner_Foodly.webp)
 
 </div>
 
