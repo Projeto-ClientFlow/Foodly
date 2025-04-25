@@ -35,6 +35,17 @@ public class Produto {
 	@NotNull(message = "O atributo Tamanho da Porção é obrigatório!")
 	private Float tamanhoPorcao;
 	
+	@NotNull (message = "O atributo Foto é obrigatório!")
+	private String foto;
+	
+	public String getFoto() {
+		return foto;
+	}
+
+	public void setFoto(String foto) {
+		this.foto = foto;
+	}
+
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria; 
